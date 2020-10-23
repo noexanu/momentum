@@ -50,6 +50,7 @@ const BACKGROUND_AND_GREAT = () => {
   const body = document.body.style
   const greeting = document.querySelector('.greeting')
   const img = new Image()
+  let src = ''
   const getRandomInt = (min, max) => {
     return Math.floor(Math.random() * (max - min)) + min
   }
@@ -59,25 +60,27 @@ const BACKGROUND_AND_GREAT = () => {
       randomInt = addZero(getRandomInt(1,20))
       switch (true) {
         case hour < 6:
-          img.onload = () => body.backgroundImage = `url('images/night/${randomInt}.jpg')`
-          img.src = `images/night/${randomInt}.jpg`
+          //img.onload = () => body.backgroundImage = `url('https://raw.githubusercontent.com/irinainina/ready-projects/momentum/momentum/assets/images/night/${randomInt}.jpg')`
+          src = `https://raw.githubusercontent.com/irinainina/ready-projects/momentum/momentum/assets/images/night/${randomInt}.jpg`
           greeting.textContent = 'Good Night,'
           break
         case hour < 12:
-          img.onload = () => body.backgroundImage = `url('images/morning/${randomInt}.jpg')`
-          img.src = `images/morning/${randomInt}.jpg`
+          //img.onload = () => body.backgroundImage = `url('https://raw.githubusercontent.com/irinainina/ready-projects/momentum/momentum/assets/images/morning/${randomInt}.jpg')`
+          src = `https://raw.githubusercontent.com/irinainina/ready-projects/momentum/momentum/assets/images/morning/${randomInt}.jpg`
           greeting.textContent = 'Good Morning,'
           break
         case hour < 18:
-          img.onload = () => body.backgroundImage = `url('images/day/${randomInt}.jpg')`
-          img.src = `images/day/${randomInt}.jpg`
+          //img.onload = () => body.backgroundImage = `url('https://raw.githubusercontent.com/irinainina/ready-projects/momentum/momentum/assets/images/day/${randomInt}.jpg')`
+          src = `https://raw.githubusercontent.com/irinainina/ready-projects/momentum/momentum/assets/images/day/${randomInt}.jpg`
           greeting.textContent = 'Good Day,'
           break
         default:
-          img.onload = () => body.backgroundImage = `url('images/evening/${randomInt}.jpg')`
-          img.src = `images/evening/${randomInt}.jpg`
+          //img.onload = () => body.backgroundImage = `url('https://raw.githubusercontent.com/irinainina/ready-projects/momentum/momentum/assets/images/evening/${randomInt}.jpg')`
+          src = `https://raw.githubusercontent.com/irinainina/ready-projects/momentum/momentum/assets/images/evening/${randomInt}.jpg`
           greeting.textContent = 'Good Evening,'
       }
+    img.onload = () => body.backgroundImage = `url(${src})`
+    img.src = src
     setTimeout(setBgGreet, 3600000)
   }
   setBgGreet()
@@ -141,28 +144,31 @@ const LOCAL_STORAGE = () => {
 
 const SCROLL = () => {
   let currentImg = 1
+  let src = ''
   const body = document.body.style
   const next = document.querySelector('.scrollImg')
   const img = new Image()
   const scrollImg = () => {
     switch (true) {
         case currentImg < 21:
-          img.onload = () => body.backgroundImage = `url('images/night/${addZero(currentImg)}.jpg')`
-          img.src = `images/night/${addZero(currentImg)}.jpg`
+          //img.onload = () => body.backgroundImage = `url('https://raw.githubusercontent.com/irinainina/ready-projects/momentum/momentum/assets/images/night/${addZero(currentImg)}.jpg')`
+          src = `https://raw.githubusercontent.com/irinainina/ready-projects/momentum/momentum/assets/images/night/${addZero(currentImg)}.jpg`
           break
         case currentImg < 41:
-          img.onload = () => body.backgroundImage = `url('images/morning/${addZero(currentImg - 20)}.jpg')`
-          img.src = `images/morning/${addZero(currentImg - 20)}.jpg`
+          //img.onload = () => body.backgroundImage = `url('https://raw.githubusercontent.com/irinainina/ready-projects/momentum/momentum/assets/images/morning/${addZero(currentImg - 20)}.jpg')`
+          src = `https://raw.githubusercontent.com/irinainina/ready-projects/momentum/momentum/assets/images/morning/${addZero(currentImg - 20)}.jpg`
           break
         case currentImg < 61:
-          img.onload = () => body.backgroundImage = `url('images/day/${addZero(currentImg - 40)}.jpg')`
-          img.src = `images/day/${addZero(currentImg - 40)}.jpg`
+          //img.onload = () => body.backgroundImage = `url('https://raw.githubusercontent.com/irinainina/ready-projects/momentum/momentum/assets/images/day/${addZero(currentImg - 40)}.jpg')`
+          src = `https://raw.githubusercontent.com/irinainina/ready-projects/momentum/momentum/assets/images/day/${addZero(currentImg - 40)}.jpg`
           break
         case currentImg < 81:
-          img.onload = () => body.backgroundImage = `url('images/evening/${addZero(currentImg - 60)}.jpg')`
-          img.src = `images/evening/${addZero(currentImg - 60)}.jpg`
+          //img.onload = () => body.backgroundImage = `url('https://raw.githubusercontent.com/irinainina/ready-projects/momentum/momentum/assets/images/evening/${addZero(currentImg - 60)}.jpg')`
+          src = `https://raw.githubusercontent.com/irinainina/ready-projects/momentum/momentum/assets/images/evening/${addZero(currentImg - 60)}.jpg`
           break
       }
+    img.onload = () => body.backgroundImage = `url(${src})`
+    img.src = src
     currentImg = (currentImg === 80 ? 0 : currentImg) + 1
     next.disabled = true
     setTimeout(function() { next.disabled = false }, 2500)
