@@ -56,21 +56,26 @@ const BACKGROUND_AND_GREAT = () => {
     let today = new Date(),
       hour = today.getHours(),
       randomInt = addZero(getRandomInt(1,20))
+    const img = document.createElement('img')
       switch (true) {
         case hour < 6:
-          body.backgroundImage = `url('images/night/${randomInt}.jpg')`
+          img.src = `images/night/${randomInt}.jpg`
+          img.onload = () => body.backgroundImage = `url('images/night/${randomInt}.jpg')`
           greeting.textContent = 'Good Night,'
           break
         case hour < 12:
-          body.backgroundImage = `url('images/morning/${randomInt}.jpg')`
+          img.src = `images/morning/${randomInt}.jpg`
+          img.onload = () => body.backgroundImage = `url('images/morning/${randomInt}.jpg')`
           greeting.textContent = 'Good Morning,'
           break
         case hour < 18:
-          body.backgroundImage = `url('images/day/${randomInt}.jpg')`
+          img.src = `images/day/${randomInt}.jpg`
+          img.onload = () => body.backgroundImage = `url('images/day/${randomInt}.jpg')`
           greeting.textContent = 'Good Day,'
           break
         default:
-          body.backgroundImage = `url('images/evening/${randomInt}.jpg')`
+          img.src = `images/evening/${randomInt}.jpg`
+          img.onload = () => body.backgroundImage = `url('images/evening/${randomInt}.jpg')`
           greeting.textContent = 'Good Evening,'
       }
     setTimeout(setBgGreet, 3600000)
@@ -139,27 +144,30 @@ const SCROLL = () => {
   let transition = false
   const body = document.body.style
   const next = document.querySelector('.scrollImg')
-  next.disabled = false
+  const img = document.createElement('img')
   const scrollImg = () => {
-    next.disabled = true
     if (!transition) {
       switch (true) {
           case currentImg < 21:
-
-            body.backgroundImage = `url('images/night/${addZero(currentImg)}.jpg')`
+            img.src = `images/night/${addZero(currentImg)}.jpg`
+            img.onload = () => body.backgroundImage = `url('images/night/${addZero(currentImg)}.jpg')`
             break
           case currentImg < 41:
-            body.backgroundImage = `url('images/morning/${addZero(currentImg - 20)}.jpg')`
+            img.src = `images/morning/${addZero(currentImg - 20)}.jpg`
+            img.onload = () => body.backgroundImage = `url('images/morning/${addZero(currentImg - 20)}.jpg')`
             break
           case currentImg < 61:
-            body.backgroundImage = `url('images/day/${addZero(currentImg - 40)}.jpg')`
+            img.src = `images/day/${addZero(currentImg - 40)}.jpg`
+            img.onload = () => body.backgroundImage = `url('images/day/${addZero(currentImg - 40)}.jpg')`
             break
           case currentImg < 81:
-            body.backgroundImage = `url('images/evening/${addZero(currentImg - 60)}.jpg')`
+            img.src = `images/evening/${addZero(currentImg - 60)}.jpg`
+            img.onload = () => body.backgroundImage = `url('images/evening/${addZero(currentImg - 60)}.jpg')`
             break
         }
       currentImg = (currentImg === 80 ? 0 : currentImg) + 1
-      setTimeout(function() { next.disabled = false }, 2500);
+      next.disabled = true
+      setTimeout(function() { next.disabled = false }, 2500)
     }
   }
   next.addEventListener('click', scrollImg)
