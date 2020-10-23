@@ -167,11 +167,13 @@ const SCROLL = () => {
           src = `https://raw.githubusercontent.com/irinainina/ready-projects/momentum/momentum/assets/images/evening/${addZero(currentImg - 60)}.jpg`
           break
       }
-    img.onload = () => body.backgroundImage = `url(${src})`
+    img.onload = () => { 
+      body.backgroundImage = `url(${src})`
+      setTimeout(function() { next.disabled = false }, 2500)
+    }
     img.src = src
     currentImg = (currentImg === 80 ? 0 : currentImg) + 1
     next.disabled = true
-    setTimeout(function() { next.disabled = false }, 2500)
   }
   next.addEventListener('click', scrollImg)
 }
