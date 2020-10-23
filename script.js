@@ -59,23 +59,23 @@ const BACKGROUND_AND_GREAT = () => {
     const img = document.createElement('img')
       switch (true) {
         case hour < 6:
-          img.src = `images/night/${randomInt}.jpg`
           img.onload = () => body.backgroundImage = `url('images/night/${randomInt}.jpg')`
+          img.src = `images/night/${randomInt}.jpg`
           greeting.textContent = 'Good Night,'
           break
         case hour < 12:
-          img.src = `images/morning/${randomInt}.jpg`
           img.onload = () => body.backgroundImage = `url('images/morning/${randomInt}.jpg')`
+          img.src = `images/morning/${randomInt}.jpg`
           greeting.textContent = 'Good Morning,'
           break
         case hour < 18:
-          img.src = `images/day/${randomInt}.jpg`
           img.onload = () => body.backgroundImage = `url('images/day/${randomInt}.jpg')`
+          img.src = `images/day/${randomInt}.jpg`
           greeting.textContent = 'Good Day,'
           break
         default:
-          img.src = `images/evening/${randomInt}.jpg`
           img.onload = () => body.backgroundImage = `url('images/evening/${randomInt}.jpg')`
+          img.src = `images/evening/${randomInt}.jpg`
           greeting.textContent = 'Good Evening,'
       }
     setTimeout(setBgGreet, 3600000)
@@ -149,20 +149,20 @@ const SCROLL = () => {
     if (!transition) {
       switch (true) {
           case currentImg < 21:
-            img.src = `images/night/${addZero(currentImg)}.jpg`
             img.onload = () => body.backgroundImage = `url('images/night/${addZero(currentImg)}.jpg')`
+            img.src = `images/night/${addZero(currentImg)}.jpg`
             break
           case currentImg < 41:
-            img.src = `images/morning/${addZero(currentImg - 20)}.jpg`
             img.onload = () => body.backgroundImage = `url('images/morning/${addZero(currentImg - 20)}.jpg')`
+            img.src = `images/morning/${addZero(currentImg - 20)}.jpg`
             break
           case currentImg < 61:
-            img.src = `images/day/${addZero(currentImg - 40)}.jpg`
             img.onload = () => body.backgroundImage = `url('images/day/${addZero(currentImg - 40)}.jpg')`
+            img.src = `images/day/${addZero(currentImg - 40)}.jpg`
             break
           case currentImg < 81:
-            img.src = `images/evening/${addZero(currentImg - 60)}.jpg`
             img.onload = () => body.backgroundImage = `url('images/evening/${addZero(currentImg - 60)}.jpg')`
+            img.src = `images/evening/${addZero(currentImg - 60)}.jpg`
             break
         }
       currentImg = (currentImg === 80 ? 0 : currentImg) + 1
