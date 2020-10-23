@@ -49,6 +49,7 @@ const TIME = () => {
 const BACKGROUND_AND_GREAT = () => {
   const body = document.body.style
   const greeting = document.querySelector('.greeting')
+  const img = new Image()
   const getRandomInt = (min, max) => {
     return Math.floor(Math.random() * (max - min)) + min
   }
@@ -56,7 +57,6 @@ const BACKGROUND_AND_GREAT = () => {
     let today = new Date(),
       hour = today.getHours(),
       randomInt = addZero(getRandomInt(1,20))
-    const img = document.createElement('img')
       switch (true) {
         case hour < 6:
           img.onload = () => body.backgroundImage = `url('images/night/${randomInt}.jpg')`
@@ -144,7 +144,7 @@ const SCROLL = () => {
   let transition = false
   const body = document.body.style
   const next = document.querySelector('.scrollImg')
-  const img = document.createElement('img')
+  const img = new Image()
   const scrollImg = () => {
     if (!transition) {
       switch (true) {
