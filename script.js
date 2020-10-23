@@ -141,34 +141,31 @@ const LOCAL_STORAGE = () => {
 
 const SCROLL = () => {
   let currentImg = 1
-  let transition = false
   const body = document.body.style
   const next = document.querySelector('.scrollImg')
   const img = new Image()
   const scrollImg = () => {
-    if (!transition) {
-      switch (true) {
-          case currentImg < 21:
-            img.onload = () => body.backgroundImage = `url('images/night/${addZero(currentImg)}.jpg')`
-            img.src = `images/night/${addZero(currentImg)}.jpg`
-            break
-          case currentImg < 41:
-            img.onload = () => body.backgroundImage = `url('images/morning/${addZero(currentImg - 20)}.jpg')`
-            img.src = `images/morning/${addZero(currentImg - 20)}.jpg`
-            break
-          case currentImg < 61:
-            img.onload = () => body.backgroundImage = `url('images/day/${addZero(currentImg - 40)}.jpg')`
-            img.src = `images/day/${addZero(currentImg - 40)}.jpg`
-            break
-          case currentImg < 81:
-            img.onload = () => body.backgroundImage = `url('images/evening/${addZero(currentImg - 60)}.jpg')`
-            img.src = `images/evening/${addZero(currentImg - 60)}.jpg`
-            break
-        }
-      currentImg = (currentImg === 80 ? 0 : currentImg) + 1
-      next.disabled = true
-      setTimeout(function() { next.disabled = false }, 2500)
-    }
+    switch (true) {
+        case currentImg < 21:
+          img.onload = () => body.backgroundImage = `url('images/night/${addZero(currentImg)}.jpg')`
+          img.src = `images/night/${addZero(currentImg)}.jpg`
+          break
+        case currentImg < 41:
+          img.onload = () => body.backgroundImage = `url('images/morning/${addZero(currentImg - 20)}.jpg')`
+          img.src = `images/morning/${addZero(currentImg - 20)}.jpg`
+          break
+        case currentImg < 61:
+          img.onload = () => body.backgroundImage = `url('images/day/${addZero(currentImg - 40)}.jpg')`
+          img.src = `images/day/${addZero(currentImg - 40)}.jpg`
+          break
+        case currentImg < 81:
+          img.onload = () => body.backgroundImage = `url('images/evening/${addZero(currentImg - 60)}.jpg')`
+          img.src = `images/evening/${addZero(currentImg - 60)}.jpg`
+          break
+      }
+    currentImg = (currentImg === 80 ? 0 : currentImg) + 1
+    next.disabled = true
+    setTimeout(function() { next.disabled = false }, 2500)
   }
   next.addEventListener('click', scrollImg)
 }
