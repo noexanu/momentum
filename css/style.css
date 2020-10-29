@@ -56,7 +56,7 @@ div {
   margin-bottom: 15px;
 }
 
-.name, .focus {
+.name, .city, .focus {
   min-width: 20px;
   max-width: 75vw;
 }
