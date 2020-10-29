@@ -92,7 +92,10 @@ const BACKGROUND_AND_GREAT = () => {
 
 const LOCAL_STORAGE = () => {
   const name = document.querySelector('.name')
+  const city = document.querySelector('.city')
   const focus = document.querySelector('.focus')
+  const output = document.querySelector('.weather')
+  const weatherIcon = document.querySelector('.weather-icon')
   const getText = () => {
     if (localStorage.getItem('focus') === null || localStorage.getItem('focus') === '') {
       focus.textContent = '[Enter Focus]'
@@ -104,12 +107,20 @@ const LOCAL_STORAGE = () => {
     } else {
       name.textContent = localStorage.getItem('name');
     }
+    if (localStorage.getItem('city') === null || localStorage.getItem('city') === '') {
+      output.textContent = ''
+      city.textContent = '[Enter City]';
+      weatherIcon.className = 'weather-icon owf'
+    } else {
+      city.textContent = localStorage.getItem('city');
+    }
   }
   function setText(e) {
     const setItem = () => {
       localStorage.setItem(this.classList[0], this.innerText)
-      focus.blur()
       name.blur()
+      city.blur()
+      focus.blur()
     }
     switch (e.type) {
       case 'focus':
@@ -132,6 +143,9 @@ const LOCAL_STORAGE = () => {
   name.addEventListener('focus', setText)
   name.addEventListener('keypress', setText)
   name.addEventListener('blur', setText)
+  city.addEventListener('focus', setText)
+  city.addEventListener('keypress', setText)
+  city.addEventListener('blur', setText)
   focus.addEventListener('focus', setText)
   focus.addEventListener('keypress', setText)
   focus.addEventListener('blur', setText)
